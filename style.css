@@ -1,0 +1,263 @@
+/* Хакерская тема - Matrix Style */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #0f0;
+    font-family: 'Share Tech Mono', monospace;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Анимированный фон - падающий код */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+            linear-gradient(transparent 95%, rgba(0, 255, 0, 0.1) 100%),
+            repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 0, 0.03) 3px,
+                    rgba(0, 255, 0, 0.03) 4px
+            );
+    animation: matrixRain 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes matrixRain {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100vh; }
+}
+
+/* Контейнеры */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(0, 20, 0, 0.8);
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    box-shadow:
+            0 0 20px rgba(0, 255, 0, 0.3),
+            inset 0 0 20px rgba(0, 255, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(0, 255, 0, 0.05) 11px,
+            rgba(0, 255, 0, 0.05) 20px
+    );
+    animation: scan 10s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* Заголовки */
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow:
+            0 0 10px #0f0,
+            0 0 20px #0f0,
+            0 0 30px #0f0;
+    animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translateX(0); }
+    10% { transform: translateX(-2px); }
+    20% { transform: translateX(2px); }
+    30% { transform: translateX(-1px); }
+    40% { transform: translateX(1px); }
+    50% { transform: translateX(0); }
+}
+
+/* Формы */
+form {
+    margin: 20px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+/* Поля ввода */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(0, 10, 0, 0.8);
+    border: 1px solid #0f0;
+    border-radius: 3px;
+    color: #0f0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1em;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    box-shadow:
+            0 0 10px #0f0,
+            inset 0 0 10px rgba(0, 255, 0, 0.2);
+    border-color: #0f0;
+}
+
+/* Плейсхолдеры */
+::placeholder {
+    color: #0a0;
+    opacity: 0.7;
+}
+
+/* Кнопки */
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #001100, #003300);
+    border: 1px solid #0f0;
+    border-radius: 3px;
+    color: #0f0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #002200, #004400);
+    box-shadow:
+            0 0 15px #0f0,
+            0 0 30px rgba(0, 255, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow:
+            0 0 5px #0f0,
+            inset 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+/* Специфичные кнопки */
+form[action="logout.php"] button {
+    background: linear-gradient(45deg, #110000, #330000);
+    border-color: #f00;
+}
+
+form[action="logout.php"] button:hover {
+    background: linear-gradient(45deg, #220000, #440000);
+    box-shadow:
+            0 0 15px #f00,
+            0 0 30px rgba(255, 0, 0, 0.3);
+}
+
+form[action="delete.php"] button {
+    background: linear-gradient(45deg, #111100, #333300);
+    border-color: #ff0;
+}
+
+form[action="delete.php"] button:hover {
+    background: linear-gradient(45deg, #222200, #444400);
+    box-shadow:
+            0 0 15px #ff0,
+            0 0 30px rgba(255, 255, 0, 0.3);
+}
+
+/* Сообщения */
+.message {
+    padding: 15px;
+    margin: 20px 0;
+    border: 1px solid #0f0;
+    border-radius: 3px;
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+}
+
+/* Эффект типирования для заголовка */
+.typing {
+    overflow: hidden;
+    border-right: 2px solid #0f0;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #0f0 }
+}
